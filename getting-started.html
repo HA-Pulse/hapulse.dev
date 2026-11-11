@@ -1,0 +1,218 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Getting started with HAGHS | HA Pulse</title>
+<meta name="description" content="Install HAGHS from the Home Assistant Marketplace or HACS, set it up, exclude what should not count and add the dashboard cards. Short guide with links to the full documentation.">
+<link rel="canonical" href="https://hapulse.dev/getting-started.html">
+<meta name="theme-color" content="#0a0a0b">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="assets/icon-32.png" sizes="32x32" type="image/png">
+<link rel="apple-touch-icon" href="assets/icon-180.png">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="HA Pulse">
+<meta property="og:title" content="Getting started with HAGHS">
+<meta property="og:description" content="Install, set up and use the Home Assistant Global Health Score in five minutes.">
+<meta property="og:url" content="https://hapulse.dev/getting-started.html">
+<meta property="og:image" content="https://hapulse.dev/assets/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preload" href="assets/fonts/inter-regular.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="nav">
+  <div class="container nav-inner">
+    <a href="./" class="logo" aria-label="HA Pulse, home"><img src="assets/icon-192.png" alt="" width="26" height="26">HA&nbsp;Pulse</a>
+    <nav class="nav-links" aria-label="Main">
+      <a href="./">Overview</a>
+      <a href="getting-started.html" aria-current="page">Getting started</a>
+      <a href="https://github.com/HA-Pulse/home-assistant-global-health-score/tree/main/docs">Docs</a>
+      <a href="https://github.com/HA-Pulse/home-assistant-global-health-score/discussions">Community</a>
+    </nav>
+    <div class="nav-spacer"></div>
+    <div class="nav-cta">
+      <a href="https://github.com/HA-Pulse/home-assistant-global-health-score" class="btn btn-ghost">GitHub →</a>
+      <a href="#install" class="btn btn-secondary">Install</a>
+    </div>
+  </div>
+</header>
+
+<div class="container">
+  <div class="docs-shell">
+
+    <aside class="docs-side" aria-label="Guide sections">
+      <h2>Getting started</h2>
+      <ul>
+        <li><a href="#requirements">Requirements</a></li>
+        <li><a href="#install">Installation</a></li>
+        <li><a href="#setup">Setup and options</a></li>
+        <li><a href="#exclude">Excluding entities</a></li>
+        <li><a href="#cards">Dashboard cards</a></li>
+        <li><a href="#automations">Automations</a></li>
+        <li><a href="#more">Full documentation</a></li>
+      </ul>
+    </aside>
+
+    <main id="main" class="docs-main">
+      <span class="eyebrow mono">// getting started</span>
+      <h1>Getting started</h1>
+      <p class="lead">HAGHS adds one sensor to Home Assistant: a 0–100 health score with the reasons for every missing point. This guide gets you from install to dashboard. Every detail lives in the documentation on GitHub.</p>
+
+      <div class="callout">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 2 4 6v6c0 5 3.5 9 8 10 4.5-1 8-5 8-10V6l-8-4z"/></svg>
+        <span>HAGHS runs entirely on your Home Assistant. It sends no data anywhere and needs no account.</span>
+      </div>
+
+      <h2 id="requirements">Requirements</h2>
+      <ul>
+        <li>Home Assistant <strong>2024.10</strong> or newer.</li>
+        <li>On Linux hosts that provide <strong>PSI</strong> (Pressure Stall Information), nothing else is needed. Otherwise add the built-in <a href="https://www.home-assistant.io/integrations/systemmonitor/">System Monitor</a> integration and enable its processor and memory usage entities, which are disabled by default.</li>
+        <li>Database size and disk usage are detected automatically. External databases (MariaDB, PostgreSQL) need a size sensor, see <a href="https://github.com/HA-Pulse/home-assistant-global-health-score/blob/main/docs/configuration.md">configuration</a>.</li>
+      </ul>
+
+      <h2 id="install">Installation</h2>
+      <h3>Home Assistant 2026.11 and later</h3>
+      <ol>
+        <li>Open <strong>Settings › Marketplace</strong> and search for <strong>HAGHS</strong>.</li>
+        <li>Select <strong>Install</strong>. The setup opens right away, no restart needed.</li>
+      </ol>
+      <h3>Home Assistant up to 2026.10 (HACS)</h3>
+      <ol>
+        <li>Open HACS, search for <strong>HAGHS</strong> and download it.</li>
+        <li>Restart Home Assistant.</li>
+        <li>Go to <strong>Settings › Devices &amp; Services › Add Integration</strong> and search for <strong>HAGHS</strong>.</li>
+      </ol>
+      <p>Installations made with HACS move to the Marketplace automatically when you update Home Assistant to 2026.11 and keep receiving updates.</p>
+
+      <h2 id="setup">Setup and options</h2>
+      <p>The setup asks for a few things, all of which you can change later under <strong>Settings › Devices &amp; Services › HAGHS › Configure</strong>, without a restart:</p>
+      <ul>
+        <li><strong>Storage type</strong>: SD card, eMMC or SSD. It sets the disk space thresholds.</li>
+        <li><strong>CPU and RAM sensors</strong>: only used when PSI is not available.</li>
+        <li><strong>Ignore labels</strong> and <strong>ignore patterns</strong>: see below.</li>
+        <li><strong>Database size sensor</strong>: only for external databases.</li>
+      </ul>
+      <p>The options also hold the update interval, the zombie grace periods, opt-in stale reporting and the integration entries to exclude from Integration Health. All of them are in <a href="https://github.com/HA-Pulse/home-assistant-global-health-score/blob/main/docs/configuration.md">docs/configuration.md</a>.</p>
+
+      <h2 id="exclude">Excluding entities</h2>
+      <p>A sleeping tablet or a seasonal device should not cost points. Three ways keep an entity out of the score:</p>
+      <ol>
+        <li><strong>Disable the entity.</strong> Disabled entities never count.</li>
+        <li><strong>Apply an ignore label</strong> to an area, device, entity or update entity. The <code class="inline">haghs_ignore</code> label is created during setup. A label on a device covers all its entities.</li>
+        <li><strong>Use a glob pattern</strong> such as <code class="inline">sensor.docker_*</code> for entities without a unique ID, which cannot carry a label.</li>
+      </ol>
+      <p>For a vacation mode, <strong>conditional ignore labels</strong> apply only while a helper you choose is on. A zombie is an availability signal, not a deletion list: check an entity's integration and device before you delete it.</p>
+
+      <h2 id="cards">Dashboard cards</h2>
+      <p>Two ready-made cards show the score, the breakdown and links to every fix. Open the YAML file, copy its content into a manual card (<em>Edit dashboard › Add card › Manual</em>). Both use <code class="inline">sensor.system_ha_global_health_score</code>; if your sensor has another ID, replace it in the card.</p>
+      <div class="cards-figs">
+        <figure>
+          <img src="assets/dashboard-lite.png" alt="HAGHS Lite dashboard card with score gauge, sub-scores and links" width="492" height="403" loading="lazy">
+          <figcaption><strong>Lite</strong>, a quick check. <a href="https://github.com/HA-Pulse/home-assistant-global-health-score/blob/main/docs/cards/lite.yaml">lite.yaml</a></figcaption>
+        </figure>
+        <figure class="pro">
+          <img src="assets/dashboard-pro.png" alt="HAGHS Pro dashboard card with full breakdown, advisor, repairs, updates, stale reporting and zombie list" width="492" height="1587" loading="lazy">
+          <figcaption><strong>Pro</strong>, the command center. <a href="https://github.com/HA-Pulse/home-assistant-global-health-score/blob/main/docs/cards/pro.yaml">pro.yaml</a></figcaption>
+        </figure>
+      </div>
+
+      <h2 id="automations">Automations</h2>
+      <p>The score is a normal sensor. This automation sends the advisor text when the score drops below 80:</p>
+<pre class="code boxed"><span class="tok-key">- alias</span>: <span class="tok-str">"HAGHS: health score dropped"</span>
+  <span class="tok-key">triggers</span>:
+    - <span class="tok-key">trigger</span>: numeric_state
+      <span class="tok-key">entity_id</span>: sensor.system_ha_global_health_score
+      <span class="tok-key">below</span>: <span class="tok-num">80</span>
+  <span class="tok-key">actions</span>:
+    - <span class="tok-key">action</span>: notify.notify
+      <span class="tok-key">data</span>:
+        <span class="tok-key">message</span>: <span class="tok-str">"{{ state_attr('sensor.system_ha_global_health_score', 'recommendations') }}"</span></pre>
+      <p>The most used attributes:</p>
+      <div class="table-wrap">
+      <table class="attr-table">
+        <thead><tr><th scope="col">Attribute</th><th scope="col">Meaning</th></tr></thead>
+        <tbody>
+          <tr><td>hardware_score</td><td>Hardware pillar, 0–100</td></tr>
+          <tr><td>application_score</td><td>Application pillar, 0–100</td></tr>
+          <tr><td>recommendations</td><td>Advisor lines for everything that costs points</td></tr>
+          <tr><td>zombie_count</td><td>Entities unavailable or unknown past the grace period</td></tr>
+          <tr><td>zombie_reasons</td><td>Why each listed zombie is reported</td></tr>
+          <tr><td>pending_updates</td><td>Pending updates, counted after 7 days</td></tr>
+          <tr><td>repair_count</td><td>Open repairs counted in the score</td></tr>
+          <tr><td>db_size_mb</td><td>Database size in MB</td></tr>
+          <tr><td>psi_available</td><td>Whether PSI provides CPU and memory data</td></tr>
+        </tbody>
+      </table>
+      </div>
+
+      <h2 id="more">Full documentation</h2>
+      <ul class="link-list">
+        <li><a href="https://github.com/HA-Pulse/home-assistant-global-health-score/blob/main/docs/scoring.md">Scoring<small>Every component, threshold and cap</small></a></li>
+        <li><a href="https://github.com/HA-Pulse/home-assistant-global-health-score/blob/main/docs/configuration.md">Configuration<small>Options, labels, external databases</small></a></li>
+        <li><a href="https://github.com/HA-Pulse/home-assistant-global-health-score/blob/main/docs/attributes.md">Sensor attributes<small>Every attribute with type and meaning</small></a></li>
+        <li><a href="https://github.com/HA-Pulse/home-assistant-global-health-score/blob/main/docs/cards.md">Dashboard cards<small>Lite and Pro in detail</small></a></li>
+        <li><a href="https://github.com/HA-Pulse/home-assistant-global-health-score/blob/main/docs/faq.md">FAQ<small>Common questions with full answers</small></a></li>
+        <li><a href="https://github.com/HA-Pulse/home-assistant-global-health-score/blob/main/docs/changelog.md">Changelog<small>A summary of every release</small></a></li>
+      </ul>
+    </main>
+
+    <aside class="docs-toc" aria-label="On this page">
+      <h2>On this page</h2>
+      <ul>
+        <li><a href="#requirements">Requirements</a></li>
+        <li><a href="#install">Installation</a></li>
+        <li><a href="#setup">Setup and options</a></li>
+        <li><a href="#exclude">Excluding entities</a></li>
+        <li><a href="#cards">Dashboard cards</a></li>
+        <li><a href="#automations">Automations</a></li>
+        <li><a href="#more">Full documentation</a></li>
+      </ul>
+    </aside>
+
+  </div>
+</div>
+
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-col">
+        <a href="./" class="logo"><img src="assets/icon-192.png" alt="" width="26" height="26">HA&nbsp;Pulse</a>
+        <p>Home of HAGHS, the open health score for Home Assistant. Not affiliated with Nabu Casa or the Home Assistant project.</p>
+      </div>
+      <div class="footer-col"><h2>Docs</h2>
+        <ul>
+          <li><a href="getting-started.html">Getting started</a></li>
+          <li><a href="https://github.com/HA-Pulse/home-assistant-global-health-score/blob/main/docs/scoring.md">Scoring</a></li>
+          <li><a href="https://github.com/HA-Pulse/home-assistant-global-health-score/blob/main/docs/configuration.md">Configuration</a></li>
+          <li><a href="https://github.com/HA-Pulse/home-assistant-global-health-score/blob/main/docs/faq.md">FAQ</a></li>
+        </ul>
+      </div>
+      <div class="footer-col"><h2>Project</h2>
+        <ul>
+          <li><a href="https://github.com/HA-Pulse/home-assistant-global-health-score">GitHub</a></li>
+          <li><a href="https://github.com/HA-Pulse/home-assistant-global-health-score/releases">Releases</a></li>
+          <li><a href="https://github.com/HA-Pulse/home-assistant-global-health-score/blob/main/docs/changelog.md">Changelog</a></li>
+          <li><a href="https://github.com/HA-Pulse/home-assistant-global-health-score/blob/main/ROADMAP.md">Roadmap</a></li>
+        </ul>
+      </div>
+      <div class="footer-col"><h2>Community</h2>
+        <ul>
+          <li><a href="https://github.com/HA-Pulse/home-assistant-global-health-score/discussions">Discussions</a></li>
+          <li><a href="https://github.com/HA-Pulse/home-assistant-global-health-score/issues">Report an issue</a></li>
+          <li><a href="https://www.buymeacoffee.com/DN91">Buy me a coffee</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 HA Pulse · HAGHS is licensed under Apache-2.0</span>
+      <span>hapulse.dev · no cookies, no tracking</span>
+    </div>
+  </div>
+</footer>
+</body>
+</html>
