@@ -109,7 +109,7 @@
       <p>For a vacation mode, <strong>conditional ignore labels</strong> apply only while a helper you choose is on. A zombie is an availability signal, not a deletion list: check an entity's integration and device before you delete it.</p>
 
       <h2 id="cards">Dashboard cards</h2>
-      <p>Two ready-made cards show the score, the breakdown and links to every fix. Open the YAML file, copy its content into a manual card (<em>Edit dashboard › Add card › Manual</em>). Both use <code class="inline">sensor.system_ha_global_health_score</code>; if your sensor has another ID, replace it in the card.</p>
+      <p>Two ready-made cards show the score, the breakdown and links to the right settings pages. Open the YAML file, copy its content into a manual card (<em>Edit dashboard › Add card › Manual</em>). Both use <code class="inline">sensor.system_ha_global_health_score</code>; if your sensor has another ID, replace it in the card.</p>
       <div class="cards-figs">
         <figure>
           <img src="assets/dashboard-lite.png" alt="HAGHS Lite dashboard card with score gauge, sub-scores and links" width="492" height="403" loading="lazy">
@@ -129,7 +129,7 @@
       <span class="tok-key">entity_id</span>: sensor.system_ha_global_health_score
       <span class="tok-key">below</span>: <span class="tok-num">80</span>
   <span class="tok-key">actions</span>:
-    - <span class="tok-key">action</span>: notify.notify
+    - <span class="tok-key">action</span>: notify.notify  <span class="tok-com"># or your own notify action</span>
       <span class="tok-key">data</span>:
         <span class="tok-key">message</span>: <span class="tok-str">"{{ state_attr('sensor.system_ha_global_health_score', 'recommendations') }}"</span></pre>
       <p>The most used attributes:</p>
