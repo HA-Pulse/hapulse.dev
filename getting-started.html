@@ -31,12 +31,12 @@
     <nav class="nav-links" aria-label="Main">
       <a href="./">Overview</a>
       <a href="getting-started.html" aria-current="page">Getting started</a>
-      <a href="https://github.com/HA-Pulse/home-assistant-global-health-score/tree/main/docs">Docs</a>
-      <a href="https://github.com/HA-Pulse/home-assistant-global-health-score/discussions">Community</a>
+      <a href="https://github.com/HA-Pulse/home-assistant-global-health-score/tree/main/docs" target="_blank" rel="noopener">Docs<span class="sr-only"> (opens in a new tab)</span></a>
+      <a href="https://github.com/HA-Pulse/home-assistant-global-health-score/discussions" target="_blank" rel="noopener">Community<span class="sr-only"> (opens in a new tab)</span></a>
     </nav>
     <div class="nav-spacer"></div>
     <div class="nav-cta">
-      <a href="https://github.com/HA-Pulse/home-assistant-global-health-score" class="btn btn-ghost">GitHub →</a>
+      <a href="https://github.com/HA-Pulse/home-assistant-global-health-score" class="btn btn-ghost" target="_blank" rel="noopener">GitHub →<span class="sr-only"> (opens in a new tab)</span></a>
       <a href="#install" class="btn btn-secondary">Install</a>
     </div>
   </div>
@@ -71,8 +71,8 @@
       <h2 id="requirements">Requirements</h2>
       <ul>
         <li>Home Assistant <strong>2024.10</strong> or newer.</li>
-        <li>On Linux hosts that provide <strong>PSI</strong> (Pressure Stall Information), nothing else is needed. Otherwise add the built-in <a href="https://www.home-assistant.io/integrations/systemmonitor/">System Monitor</a> integration and enable its processor and memory usage entities, which are disabled by default.</li>
-        <li>Database size and disk usage are detected automatically. External databases (MariaDB, PostgreSQL) need a size sensor, see <a href="https://github.com/HA-Pulse/home-assistant-global-health-score/blob/main/docs/configuration.md">configuration</a>.</li>
+        <li>On Linux hosts that provide <strong>PSI</strong> (Pressure Stall Information), nothing else is needed. Otherwise add the built-in <a href="https://www.home-assistant.io/integrations/systemmonitor/" target="_blank" rel="noopener">System Monitor<span class="sr-only"> (opens in a new tab)</span></a> integration and enable its processor and memory usage entities, which are disabled by default.</li>
+        <li>Database size and disk usage are detected automatically. External databases (MariaDB, PostgreSQL) need a size sensor, see <a href="https://github.com/HA-Pulse/home-assistant-global-health-score/blob/main/docs/configuration.md" target="_blank" rel="noopener">configuration<span class="sr-only"> (opens in a new tab)</span></a>.</li>
       </ul>
 
       <h2 id="install">Installation</h2>
@@ -97,7 +97,7 @@
         <li><strong>Ignore labels</strong> and <strong>ignore patterns</strong>: see below.</li>
         <li><strong>Database size sensor</strong>: only for external databases.</li>
       </ul>
-      <p>The options also hold the update interval, the zombie grace periods, opt-in stale reporting and the integration entries to exclude from Integration Health. All of them are in <a href="https://github.com/HA-Pulse/home-assistant-global-health-score/blob/main/docs/configuration.md">docs/configuration.md</a>.</p>
+      <p>The options also hold the update interval, the zombie grace periods, opt-in stale reporting and the integration entries to exclude from Integration Health. All of them are in <a href="https://github.com/HA-Pulse/home-assistant-global-health-score/blob/main/docs/configuration.md" target="_blank" rel="noopener">docs/configuration.md<span class="sr-only"> (opens in a new tab)</span></a>.</p>
 
       <h2 id="exclude">Excluding entities</h2>
       <p>A sleeping tablet or a seasonal device should not cost points. Three ways keep an entity out of the score:</p>
@@ -113,11 +113,11 @@
       <div class="cards-figs">
         <figure>
           <img src="assets/dashboard-lite.png" alt="HAGHS Lite dashboard card with score gauge, sub-scores and links" width="492" height="403" loading="lazy">
-          <figcaption><strong>Lite</strong>, a quick check. <a href="https://github.com/HA-Pulse/home-assistant-global-health-score/blob/main/docs/cards/lite.yaml">lite.yaml</a></figcaption>
+          <figcaption><strong>Lite</strong>, a quick check. <a href="https://github.com/HA-Pulse/home-assistant-global-health-score/blob/main/docs/cards/lite.yaml" target="_blank" rel="noopener">lite.yaml<span class="sr-only"> (opens in a new tab)</span></a></figcaption>
         </figure>
         <figure class="pro">
           <img src="assets/dashboard-pro.png" alt="HAGHS Pro dashboard card with full breakdown, advisor, repairs, updates, stale reporting and zombie list" width="492" height="1587" loading="lazy">
-          <figcaption><strong>Pro</strong>, the command center. <a href="https://github.com/HA-Pulse/home-assistant-global-health-score/blob/main/docs/cards/pro.yaml">pro.yaml</a></figcaption>
+          <figcaption><strong>Pro</strong>, the command center. <a href="https://github.com/HA-Pulse/home-assistant-global-health-score/blob/main/docs/cards/pro.yaml" target="_blank" rel="noopener">pro.yaml<span class="sr-only"> (opens in a new tab)</span></a></figcaption>
         </figure>
       </div>
 
@@ -152,12 +152,12 @@
 
       <h2 id="more">Full documentation</h2>
       <ul class="link-list">
-        <li><a href="https://github.com/HA-Pulse/home-assistant-global-health-score/blob/main/docs/scoring.md">Scoring<small>Every component, threshold and cap</small></a></li>
-        <li><a href="https://github.com/HA-Pulse/home-assistant-global-health-score/blob/main/docs/configuration.md">Configuration<small>Options, labels, external databases</small></a></li>
-        <li><a href="https://github.com/HA-Pulse/home-assistant-global-health-score/blob/main/docs/attributes.md">Sensor attributes<small>Every attribute with type and meaning</small></a></li>
-        <li><a href="https://github.com/HA-Pulse/home-assistant-global-health-score/blob/main/docs/cards.md">Dashboard cards<small>Lite and Pro in detail</small></a></li>
-        <li><a href="https://github.com/HA-Pulse/home-assistant-global-health-score/blob/main/docs/faq.md">FAQ<small>Common questions with full answers</small></a></li>
-        <li><a href="https://github.com/HA-Pulse/home-assistant-global-health-score/blob/main/docs/changelog.md">Changelog<small>A summary of every release</small></a></li>
+        <li><a href="https://github.com/HA-Pulse/home-assistant-global-health-score/blob/main/docs/scoring.md" target="_blank" rel="noopener">Scoring<small>Every component, threshold and cap</small><span class="sr-only"> (opens in a new tab)</span></a></li>
+        <li><a href="https://github.com/HA-Pulse/home-assistant-global-health-score/blob/main/docs/configuration.md" target="_blank" rel="noopener">Configuration<small>Options, labels, external databases</small><span class="sr-only"> (opens in a new tab)</span></a></li>
+        <li><a href="https://github.com/HA-Pulse/home-assistant-global-health-score/blob/main/docs/attributes.md" target="_blank" rel="noopener">Sensor attributes<small>Every attribute with type and meaning</small><span class="sr-only"> (opens in a new tab)</span></a></li>
+        <li><a href="https://github.com/HA-Pulse/home-assistant-global-health-score/blob/main/docs/cards.md" target="_blank" rel="noopener">Dashboard cards<small>Lite and Pro in detail</small><span class="sr-only"> (opens in a new tab)</span></a></li>
+        <li><a href="https://github.com/HA-Pulse/home-assistant-global-health-score/blob/main/docs/faq.md" target="_blank" rel="noopener">FAQ<small>Common questions with full answers</small><span class="sr-only"> (opens in a new tab)</span></a></li>
+        <li><a href="https://github.com/HA-Pulse/home-assistant-global-health-score/blob/main/docs/changelog.md" target="_blank" rel="noopener">Changelog<small>A summary of every release</small><span class="sr-only"> (opens in a new tab)</span></a></li>
       </ul>
     </main>
 
@@ -187,24 +187,24 @@
       <div class="footer-col"><h2>Docs</h2>
         <ul>
           <li><a href="getting-started.html">Getting started</a></li>
-          <li><a href="https://github.com/HA-Pulse/home-assistant-global-health-score/blob/main/docs/scoring.md">Scoring</a></li>
-          <li><a href="https://github.com/HA-Pulse/home-assistant-global-health-score/blob/main/docs/configuration.md">Configuration</a></li>
-          <li><a href="https://github.com/HA-Pulse/home-assistant-global-health-score/blob/main/docs/faq.md">FAQ</a></li>
+          <li><a href="https://github.com/HA-Pulse/home-assistant-global-health-score/blob/main/docs/scoring.md" target="_blank" rel="noopener">Scoring<span class="sr-only"> (opens in a new tab)</span></a></li>
+          <li><a href="https://github.com/HA-Pulse/home-assistant-global-health-score/blob/main/docs/configuration.md" target="_blank" rel="noopener">Configuration<span class="sr-only"> (opens in a new tab)</span></a></li>
+          <li><a href="https://github.com/HA-Pulse/home-assistant-global-health-score/blob/main/docs/faq.md" target="_blank" rel="noopener">FAQ<span class="sr-only"> (opens in a new tab)</span></a></li>
         </ul>
       </div>
       <div class="footer-col"><h2>Project</h2>
         <ul>
-          <li><a href="https://github.com/HA-Pulse/home-assistant-global-health-score">GitHub</a></li>
-          <li><a href="https://github.com/HA-Pulse/home-assistant-global-health-score/releases">Releases</a></li>
-          <li><a href="https://github.com/HA-Pulse/home-assistant-global-health-score/blob/main/docs/changelog.md">Changelog</a></li>
-          <li><a href="https://github.com/HA-Pulse/home-assistant-global-health-score/blob/main/ROADMAP.md">Roadmap</a></li>
+          <li><a href="https://github.com/HA-Pulse/home-assistant-global-health-score" target="_blank" rel="noopener">GitHub<span class="sr-only"> (opens in a new tab)</span></a></li>
+          <li><a href="https://github.com/HA-Pulse/home-assistant-global-health-score/releases" target="_blank" rel="noopener">Releases<span class="sr-only"> (opens in a new tab)</span></a></li>
+          <li><a href="https://github.com/HA-Pulse/home-assistant-global-health-score/blob/main/docs/changelog.md" target="_blank" rel="noopener">Changelog<span class="sr-only"> (opens in a new tab)</span></a></li>
+          <li><a href="https://github.com/HA-Pulse/home-assistant-global-health-score/blob/main/ROADMAP.md" target="_blank" rel="noopener">Roadmap<span class="sr-only"> (opens in a new tab)</span></a></li>
         </ul>
       </div>
       <div class="footer-col"><h2>Community</h2>
         <ul>
-          <li><a href="https://github.com/HA-Pulse/home-assistant-global-health-score/discussions">Discussions</a></li>
-          <li><a href="https://github.com/HA-Pulse/home-assistant-global-health-score/issues">Report an issue</a></li>
-          <li><a href="https://www.buymeacoffee.com/DN91">Buy me a coffee</a></li>
+          <li><a href="https://github.com/HA-Pulse/home-assistant-global-health-score/discussions" target="_blank" rel="noopener">Discussions<span class="sr-only"> (opens in a new tab)</span></a></li>
+          <li><a href="https://github.com/HA-Pulse/home-assistant-global-health-score/issues" target="_blank" rel="noopener">Report an issue<span class="sr-only"> (opens in a new tab)</span></a></li>
+          <li><a href="https://www.buymeacoffee.com/DN91" target="_blank" rel="noopener">Buy me a coffee<span class="sr-only"> (opens in a new tab)</span></a></li>
         </ul>
       </div>
     </div>
